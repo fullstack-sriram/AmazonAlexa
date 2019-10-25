@@ -1,0 +1,317 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "pizza dog",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "hola",
+                        "hello",
+                        "how are you",
+                        "say hi world",
+                        "say hi",
+                        "hi",
+                        "say hello world",
+                        "say hello"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "OrderPizzaIntent",
+                    "slots": [
+                        {
+                            "name": "topping",
+                            "type": "AMAZON.Food",
+                            "samples": [
+                                "i could go for {topping}",
+                                "{topping}"
+                            ]
+                        },
+                        {
+                            "name": "crust",
+                            "type": "crust_type",
+                            "samples": [
+                                "{crust}"
+                            ]
+                        },
+                        {
+                            "name": "size",
+                            "type": "size_type",
+                            "samples": [
+                                "{size}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "fetch a {crust} crust {topping} pizza",
+                        "fetch a {topping} pizza",
+                        "for a {size} {crust} crust pizza with {topping}",
+                        "I'd like a {size} {crust} crust pizza with {topping}",
+                        "i'd like a {size} pizza with {topping}",
+                        "to order a {size} pizza",
+                        "can i get a {topping} pizza with {crust} crust",
+                        "i'd like a {crust} crust pizza with {topping}",
+                        "i'd like a {crust} crust pizza",
+                        "i'd like a {crust} pizza",
+                        "order a {topping} pizza",
+                        "i'm hungry",
+                        "order a pizza"
+                    ]
+                },
+                {
+                    "name": "FavoriteColorIntent",
+                    "slots": [
+                        {
+                            "name": "color",
+                            "type": "AMAZON.Color"
+                        }
+                    ],
+                    "samples": [
+                        "my favorite color is {color}"
+                    ]
+                },
+                {
+                    "name": "RecallColorIntent",
+                    "slots": [],
+                    "samples": [
+                        "do you remember my favorite color",
+                        "what is my favorite color"
+                    ]
+                },
+                {
+                    "name": "SizeQueryIntent",
+                    "slots": [
+                        {
+                            "name": "party_size",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "i'm feeding {party_size} people"
+                    ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "UsualOrderIntent",
+                    "slots": [],
+                    "samples": [
+                        "order my favorite pizza",
+                        "i'll have the usual",
+                        "to fetch the usual",
+                        "for the usual"
+                    ]
+                },
+                {
+                    "name": "UserDataIntent",
+                    "slots": [],
+                    "samples": [
+                        "tell me something about myself"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "crust_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "stuffed"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "thick",
+                                "synonyms": [
+                                    "regular"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "thin"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "size_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "large"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "medium"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "small"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "OrderPizzaIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "topping",
+                            "type": "AMAZON.Food",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1129966373945.265097604537"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInSet",
+                                    "prompt": "Slot.Validation.1129966373945.265097604537.189135138902",
+                                    "values": [
+                                        "sausage",
+                                        "pepperoni",
+                                        "mushroom",
+                                        "cheese"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "crust",
+                            "type": "crust_type",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1129966373945.497229858598"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInSet",
+                                    "prompt": "Slot.Validation.1129966373945.497229858598.1309017929996",
+                                    "values": [
+                                        "stuffed",
+                                        "thick",
+                                        "thin"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "size",
+                            "type": "size_type",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1129966373945.183478862349"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInSet",
+                                    "prompt": "Slot.Validation.1129966373945.183478862349.69156992828",
+                                    "values": [
+                                        "small",
+                                        "large",
+                                        "medium"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1129966373945.265097604537",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What topping would you like?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1129966373945.265097604537.189135138902",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "We serve pepperoni, sausage, cheese, or mushroom."
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "You can choose pepperoni, sausage, cheese, or mushroom."
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1129966373945.497229858598",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What sort of crust do you want?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1129966373945.497229858598.1309017929996",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "We offer thin, thick, and stuffed crust.  Which would you like?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1129966373945.183478862349",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What size of pizza?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1129966373945.183478862349.69156992828",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "You can choose small, medium, or large.  What do you want?"
+                    }
+                ]
+            }
+        ]
+    }
+}
